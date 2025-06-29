@@ -5,14 +5,14 @@
  - Supports math operations (+ - * /) between BigNumber/BigNumber and BigNumber/float
  - Supports comparison (== != < > <= >=) between BigNumbers
  - Supports ToString() (prints; 100M, 35.25ag etc.)
+ - Supports TryParse() (parses; "15550K" as 15.5M or BigNumber(15.5, 2))
  - Number types are "K, M, B, T, aa, ab, ..., ga"
  - Number types and maximum value can be modified, go for 'quintillion' or something instead of 'bb' if you want (index of suffixes are used to determine digits so they should be safe to change)
- - Or you may add a lot more suffixes and it will work (Remember to adjust the maximum value according to your needs or look at the example below)
+ - Or you may add a lot more suffixes and it will work
 
 ```csharp
-//You can edit this line at the beginning
-private static readonly int MaxExponent = NumberTypes.stringToIndex("ga");
-
-//Like this to make it automatically select highest possible suffix for maximum value of number
-private static readonly int MaxExponent = NumberTypes.stringToIndex(NumberTypes.types[NumberTypes.types.Length - 1]);
+// Simply define a BigNumber and you are good to go
+public BigNumber bigNumber = new BigNumber(1, 0); // amount, exponent (^3)
+// BigNumber(1,1) is 1K or 1000
+// BigNumber(12, 10) is 12af or 12 * 10^30
 ```
