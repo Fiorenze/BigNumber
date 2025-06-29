@@ -7,9 +7,9 @@ public struct BigNumber
     public int Exp;
     const int TEN_CUBED = 1000;
 
-    // Find the index for the maximum suffix "ga". Change if needed
-    // Make sure the suffix is also included in NumberTypes.types
-    private static readonly int MaxExponent = NumberTypes.stringToIndex("ga");
+    // Change if needed, make sure the suffix is also included in NumberTypes.types
+    //private static readonly int MaxExponent = NumberTypes.stringToIndex("ga");
+    private static readonly int MaxExponent = NumberTypes.stringToIndex(NumberTypes.types[^1]);
     // Define the maximum amount allowed at the maximum exponent, e.g. 999ga
     private static readonly double MaxAllowedAmountAtMaxExponent = 999.0;
 
@@ -265,7 +265,7 @@ public struct BigNumber
 
         for (int i = 0; i < bigNumberString.Length; i++)
         {
-            // Iterates until it finds a char that is not a part of the number and keep the index
+            // Iterates until it finds a char that is not a part of the number and keeps the index
             if (!char.IsDigit(bigNumberString[i]) && bigNumberString[i] != '.' && bigNumberString[i] != ',')
             {
                 if (i == 0)
